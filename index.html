@@ -1,1 +1,66 @@
-index
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS変数で画像を使うサンプル</title>
+    <link rel="stylesheet" href="css/sample.css">
+  </head>
+
+  <body>
+
+    <h1>CSS変数で画像を使うサンプル</h1>
+
+    <p>CSS変数で画像を指定すると、Chrome と Safari では相対パスの解釈が異なるため一工夫必要になる。</p>
+    <p>一番簡単な解決方法は絶対パスにすること。</p>
+
+    <section>
+      <h2>CSSファイルを起点とした相対パス表記</h2>
+      <p>Chrome…○ / Safari…×</p>
+
+      <pre><code>
+--img:url('../img/300x250.png');
+      </code></pre>
+
+      <div class="imgbox-1" style="--img:url('../img/300x250.png');"></div>
+    </section>
+
+
+    <section>
+      <h2>表示URLを起点とした相対パス表記</h2>
+      <p>Chrome…× / Safari…○</p>
+
+      <pre><code>
+--img:url('img/300x250.png');
+      </code></pre>
+
+      <div class="imgbox-1" style="--img:url('img/300x250.png');"></div>
+    </section>
+
+
+    <section>
+      <h2>background-image だけ html 内に記述</h2>
+      <p>Chrome…○ / Safari…○</p>
+
+      <pre><code>
+--img:url('img/300x250.png');
+
+// html内に記述
+.imgbox-2{
+  background-image: var(--img);
+}
+      </code></pre>
+
+      <div class="imgbox-2" style="--img:url('img/300x250.png');"></div>
+
+      <style>
+        .imgbox-2{
+          background-image: var(--img);
+        }
+      </style>
+    </section>
+
+
+
+  </body>
+
+</html>
